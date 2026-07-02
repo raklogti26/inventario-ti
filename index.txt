@@ -1,1 +1,101 @@
+PROJETO INVENTARIO TI
 
+OBJETIVO
+- Substituir planilha Excel
+- Interface Web
+- Acesso por navegador
+- Cadastro de ativos
+- Consulta de ativos
+- Controle de usuários
+
+TECNOLOGIAS
+- HTML
+- CSS
+- JavaScript
+- Firebase
+- GitHub Pages
+
+COLEÇÕES FIREBASE
+
+Computadores
+- patrimonio
+- usuario
+- setor
+- status
+- modelo
+- observacao
+
+Celulares
+- patrimonio
+- usuario
+- numero
+- imei
+- status
+- observacao
+
+Perifericos
+- patrimonio
+- usuario
+- setor
+- status
+- modelo
+- observacao
+
+Usuarios
+- nome
+- email
+- cargo
+- setor
+- telefone
+- nivel
+
+PERMISSÕES
+
+Admin
+- Cadastrar
+- Editar
+- Excluir
+
+Consulta
+- Apenas visualizar
+
+LAYOUT
+
+Menu lateral
+- Dashboard
+- Computadores
+- Celulares
+- Periféricos
+- Usuários
+
+Dashboard
+- Total Computadores
+- Total Celulares
+- Total Periféricos
+- Total Usuários
+
+FASES
+
+FASE 1
+✅ Layout HTML
+
+FASE 2
+✅ Firebase
+
+FASE 3
+⬜ Login
+
+FASE 4
+⬜ Integração Firebase
+
+FASE 5
+⬜ Cadastro
+
+FASE 6
+⬜ Edição
+
+FASE 7
+⬜ Exclusão
+
+FASE 8
+⬜ Relatórios
