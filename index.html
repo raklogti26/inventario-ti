@@ -509,6 +509,42 @@ window.collection = collection;
 window.getDocs = getDocs;
 
 
+async function carregarComputadoresFirebase(){
+
+    try{
+
+        const snapshot =
+        await getDocs(
+            collection(db,"Computadores")
+        );
+
+        let lista = [];
+
+        snapshot.forEach(doc=>{
+
+            lista.push(doc.data());
+
+        });
+
+        console.log("Dados recebidos:");
+
+        console.log(lista);
+
+    }
+    catch(erro){
+
+        console.error(
+            "Erro ao conectar:",
+            erro
+        );
+
+    }
+
+}
+
+carregarComputadoresFirebase();
+
+
     
 </script>
 
