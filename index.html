@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Inventário TI</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI, sans-serif;
+    background:#eef1f5;
+}
+
+.sidebar{
+    width:220px;
+    height:100vh;
+    background:#18263c;
+    color:white;
+    position:fixed;
+    left:0;
+    top:0;
+}
+
+.logo{
+    padding:25px;
+    font-size:20px;
+    font-weight:bold;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.menu button{
+    width:100%;
+    padding:18px;
+    text-align:left;
+    background:none;
+    border:none;
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.menu button:hover{
+    background:#22344f;
+}
+
+.content{
+    margin-left:220px;
+    padding:25px;
+}
+
+.cards{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    width:220px;
+    padding:25px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.card h2{
+    color:#2d60e8;
+    margin-bottom:10px;
+}
+
+.card span{
+    color:#666;
+}
+
+.toolbar{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+.toolbar input{
+    width:350px;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.btn{
+    border:none;
+    color:white;
+    padding:12px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn-success{
+    background:#16a34a;
+}
+
+.btn-primary{
+    background:#2563eb;
+}
+
+.btn-danger{
+    background:#dc2626;
+}
+
+.btn-info{
+    background:#0891b2;
+}
+
+.titulo-secao{
+    margin-bottom:15px;
+    font-size:22px;
+    font-weight:bold;
+    color:#333;
+}
+
+.table-container{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#2d60e8;
+    color:white;
+}
+
+th{
+    padding:14px;
+}
+
+td{
+    padding:14px;
+    border-bottom:1px solid #e5e7eb;
+}
+
+tbody tr{
+    cursor:pointer;
+}
+
+tbody tr:hover{
+    background:#edf4ff;
+}
+
+.selecionado{
+    background:#dbeafe !important;
+}
+
+.rodape{
+    margin-top:20px;
+    color:#888;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+        Inventário TI
+    </div>
+
+    <div class="menu">
+
+        <button onclick="carregarTabela('computadores')">
+            🖥 Computadores
+        </button>
+
+        <button onclick="carregarTabela('celulares')">
+            📱 Celulares
+        </button>
+
+        <button onclick="carregarTabela('perifericos')">
+            🖨 Periféricos
+        </button>
+
+        <button onclick="carregarTabela('usuarios')">
+            👥 Usuários
+        </button>
+
+        <button onclick="dashboard()">
+            📊 Dashboard
+        </button>
+
+    </div>
+
+</div>
+
+<div class="content">
+
+    <div class="cards">
+
+        <div class="card">
+            <h2 id="qtdComp">0</h2>
+            <span>Computadores</span>
+        </div>
+
+        <div class="card">
+            <h2 id="qtdCel">0</h2>
+            <span>Celulares</span>
+        </div>
+
+        <div class="card">
+            <h2 id="qtdPer">0</h2>
+            <span>Periféricos</span>
+        </div>
+
+        <div class="card">
+            <h2 id="qtdUser">0</h2>
+            <span>Usuários</span>
+        </div>
+
+        <div class="card">
+            <h2 id="qtdUso">0</h2>
+            <span>Em Uso</span>
+        </div>
+
+        <div class="card">
+            <h2 id="qtdDisp">0</h2>
+            <span>Disponíveis</span>
+        </div>
+
+    </div>
+
+    <div class="titulo-secao" id="tituloPagina">
+        Computadores
+    </div>
+
+    <div class="toolbar">
+
+        <input
+            type="text"
+            id="pesquisa"
+            placeholder="Pesquisar patrimônio, usuário ou setor..."
+        >
+
+        <button class="btn btn-success">
+            ➕ Novo
+        </button>
+
+        <button class="btn btn-primary">
+            ✏ Editar
+        </button>
+
+        <button class="btn btn-danger">
+            🗑 Excluir
+        </button>
+
+        <button class="btn btn-info">
+            🔄 Atualizar
+        </button>
+
+    </div>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+                <tr id="cabecalhoTabela"></tr>
+            </thead>
+
+            <tbody id="tabela"></tbody>
+
+        </table>
+
+    </div>
+
+    <div class="rodape">
+        Inventário TI v1.0
+    </div>
+
+</div>
+
+<script>
+
+let abaAtual = "computadores";
+
+const banco = {
+
+    computadores:[
+        {
+            patrimonio:"RAK-N012",
+            usuario:"Mateus Possato",
+            setor:"T.I.",
+            status:"Em uso"
+        },
+        {
+            patrimonio:"RAK-N020",
+            usuario:"",
+            setor:"",
+            status:"Disponível"
+        }
+    ],
+
+    celulares:[
+        {
+            patrimonio:"RAKC014",
+            usuario:"Mateus Possato",
+            numero:"19955663322",
+            status:"Em uso"
+        }
+    ],
+
+    perifericos:[
+        {
+            patrimonio:"RAKH001",
+            usuario:"Mateus Possato",
+            setor:"T.I.",
+            status:"Disponível"
+        }
+    ],
+
+    usuarios:[
+        {
+            nome:"Mateus Possato",
+            cargo:"Administrador TI",
+            setor:"T.I.",
+            nivel:"admin"
+        }
+    ]
+
+};
+
+function atualizarCards(){
+
+    document.getElementById("qtdComp").innerText =
+    banco.computadores.length;
+
+    document.getElementById("qtdCel").innerText =
+    banco.celulares.length;
+
+    document.getElementById("qtdPer").innerText =
+    banco.perifericos.length;
+
+    document.getElementById("qtdUser").innerText =
+    banco.usuarios.length;
+
+    let uso = 0;
+    let disp = 0;
+
+    banco.computadores.forEach(item=>{
+
+        if(item.status === "Em uso")
+            uso++;
+
+        if(item.status === "Disponível")
+            disp++;
+
+    });
+
+    document.getElementById("qtdUso").innerText = uso;
+    document.getElementById("qtdDisp").innerText = disp;
+}
+
+function carregarTabela(tipo){
+
+    abaAtual = tipo;
+
+    document.getElementById(
+        "tituloPagina"
+    ).innerText =
+    tipo.charAt(0).toUpperCase() +
+    tipo.slice(1);
+
+    const tabela =
+    document.getElementById("tabela");
+
+    const cabecalho =
+    document.getElementById("cabecalhoTabela");
+
+    tabela.innerHTML = "";
+    cabecalho.innerHTML = "";
+
+    if(!banco[tipo].length)
+        return;
+
+    let colunas = Object.keys(
+        banco[tipo][0]
+    );
+
+    colunas.forEach(col=>{
+
+        cabecalho.innerHTML +=
+        `<th>${col}</th>`;
+
+    });
+
+    banco[tipo].forEach(item=>{
+
+        let linha = "<tr>";
+
+        colunas.forEach(col=>{
+
+            linha +=
+            `<td>${item[col]}</td>`;
+
+        });
+
+        linha += "</tr>";
+
+        tabela.innerHTML += linha;
+
+    });
+
+    selecionarLinhas();
+}
+
+function selecionarLinhas(){
+
+    document
+    .querySelectorAll("#tabela tr")
+    .forEach(linha=>{
+
+        linha.addEventListener(
+            "click",
+            ()=>{
+
+                document
+                .querySelectorAll("#tabela tr")
+                .forEach(l=>{
+
+                    l.classList.remove(
+                        "selecionado"
+                    );
+
+                });
+
+                linha.classList.add(
+                    "selecionado"
+                );
+            }
+        );
+
+    });
+
+}
+
+function dashboard(){
+
+    document.getElementById(
+    "tituloPagina").innerText =
+    "Dashboard";
+
+}
+
+atualizarCards();
+carregarTabela("computadores");
+
+</script>
+
+</body>
+</html>
