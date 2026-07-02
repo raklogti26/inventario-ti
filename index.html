@@ -471,5 +471,46 @@ carregarTabela("computadores");
 
 </script>
 
+
+<script type="module">
+
+    
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    getDocs
+}
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyDTyRV23KZ995L-ahnK7m2lMJDv4fn0utc",
+
+  authDomain: "inventario-ti-6680d.firebaseapp.com",
+
+  projectId: "inventario-ti-6680d",
+
+  storageBucket: "inventario-ti-6680d.firebasestorage.app",
+
+  messagingSenderId: "858629077463",
+
+  appId: "1:858629077463:web:dadfdd04aca733fa79f392"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+window.db = db;
+window.collection = collection;
+window.getDocs = getDocs;
+
+
+    
+</script>
+
 </body>
 </html>
