@@ -529,9 +529,12 @@ async function carregarComputadoresFirebase(){
 
         });
 
-        console.log("Dados recebidos:");
+        banco.computadores = lista;
 
-        console.log(lista);
+        atualizarCards();
+
+        carregarTabela("computadores");
+
 
     }
     catch(erro){
