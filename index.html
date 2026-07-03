@@ -1259,19 +1259,105 @@ document
 ================================== */
 
 document
-.getElementById(
-    "btnSalvarModal"
+
+"btnSalvarModal"
 )
 .addEventListener(
     "click",
-    ()=>{
+    async ()=>{
 
-        alert(
-            "Próxima etapa: salvar no Firebase."
-        );
+        if(abaAtual !== "computadores"){
+            return;
+        }
+
+        try{
+
+            const computador = {
+
+                patrimonio:
+                document.getElementById("patrimonio").value,
+
+                dominio:
+                document.getElementById("dominio").value,
+
+                usuario:
+                document.getElementById("usuario").value,
+
+                setor:
+                document.getElementById("setor").value,
+
+                serial:
+                document.getElementById("serial").value,
+
+                status:
+                document.getElementById("status").value,
+
+                tipo:
+                document.getElementById("tipo").value,
+
+                marca:
+                document.getElementById("marca").value,
+
+                modelo:
+                document.getElementById("modelo").value,
+
+                cpu:
+                document.getElementById("cpu").value,
+
+                ram:
+                document.getElementById("ram").value,
+
+                armazenamento:
+                document.getElementById("armazenamento").value,
+
+                gpu:
+                document.getElementById("gpu").value,
+
+                sistema:
+                document.getElementById("sistema").value,
+
+                usuarioAnterior:
+                document.getElementById("usuarioAnterior").value,
+
+                observacao:
+                document.getElementById("observacao").value
+
+            };
+
+            await addDoc(
+                collection(
+                    db,
+                    "Computadores"
+                ),
+                computador
+            );
+
+            alert(
+                "Computador cadastrado com sucesso."
+            );
+
+            fecharModal();
+
+            await atualizarSistema();
+
+            carregarTabela(
+                "computadores"
+            );
+
+        }
+        catch(erro){
+
+            console.error(erro);
+
+            alert(
+                "Erro ao salvar o computador."
+            );
+
+        }
 
     }
 );
+
 
 /* ==================================
    INICIALIZAÇÃO
@@ -1291,7 +1377,8 @@ from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 import {
     getFirestore,
     collection,
-    getDocs
+    getDocs,
+    addDoc
 }
 from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
