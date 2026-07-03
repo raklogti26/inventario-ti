@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Inventário TI</title>
+<title>Inventário TI V3</title>
 
 <style>
 
@@ -17,22 +17,22 @@
 }
 
 body{
-    font-family:Segoe UI,sans-serif;
+    font-family:"Segoe UI",sans-serif;
     background:#eef1f5;
 }
 
-/* ==========================
-   SIDEBAR
-========================== */
+/* ============================= */
+/* SIDEBAR */
+/* ============================= */
 
 .sidebar{
     width:220px;
     height:100vh;
     background:#18263c;
-    color:#fff;
     position:fixed;
     left:0;
     top:0;
+    color:white;
 }
 
 .logo{
@@ -45,32 +45,38 @@ body{
 
 .menu button{
     width:100%;
-    padding:18px;
-    background:none;
     border:none;
+    background:none;
     color:white;
     text-align:left;
+    padding:18px;
     cursor:pointer;
     font-size:15px;
-    transition:.2s;
 }
 
 .menu button:hover{
     background:#22344f;
 }
 
-/* ==========================
-   CONTEUDO
-========================== */
+/* ============================= */
+/* CONTEÚDO */
+/* ============================= */
 
 .content{
     margin-left:220px;
     padding:25px;
 }
 
-/* ==========================
-   DASHBOARD
-========================== */
+.titulo-secao{
+    font-size:24px;
+    font-weight:bold;
+    color:#333;
+    margin-bottom:20px;
+}
+
+/* ============================= */
+/* DASHBOARD */
+/* ============================= */
 
 .cards{
     display:flex;
@@ -80,9 +86,9 @@ body{
 }
 
 .card{
-    background:#fff;
-    border-radius:12px;
     width:220px;
+    background:white;
+    border-radius:12px;
     padding:25px;
     box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
@@ -93,28 +99,17 @@ body{
 }
 
 .card span{
-    color:#666;
+    color:#555;
 }
 
-/* ==========================
-   TITULO
-========================== */
-
-.titulo-secao{
-    font-size:24px;
-    font-weight:bold;
-    color:#333;
-    margin-bottom:15px;
-}
-
-/* ==========================
-   TOOLBAR
-========================== */
+/* ============================= */
+/* TOOLBAR */
+/* ============================= */
 
 .toolbar{
     display:flex;
-    flex-wrap:wrap;
     gap:10px;
+    flex-wrap:wrap;
     margin-bottom:20px;
 }
 
@@ -125,16 +120,12 @@ body{
     border:1px solid #ccc;
 }
 
-/* ==========================
-   BOTÕES
-========================== */
-
 .btn{
     border:none;
     border-radius:8px;
+    cursor:pointer;
     padding:12px 18px;
     color:white;
-    cursor:pointer;
     font-weight:bold;
 }
 
@@ -154,117 +145,226 @@ body{
     background:#0891b2;
 }
 
-/* ==========================
-   TABELA
-========================== */
+.btn-warning{
+    background:#d97706;
+}
+
+/* ============================= */
+/* PAINEL FILTROS */
+/* ============================= */
+
+#painelFiltros{
+
+    display:none;
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:12px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+}
+
+#painelFiltros h3{
+
+    margin-bottom:15px;
+
+}
+
+#painelFiltros label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+}
+
+/* ============================= */
+/* TABELA */
+/* ============================= */
 
 .table-container{
+
     background:white;
+
     border-radius:12px;
+
     overflow:hidden;
+
     box-shadow:0 2px 8px rgba(0,0,0,.08);
+
 }
 
 table{
+
     width:100%;
+
     border-collapse:collapse;
+
 }
 
 thead{
+
     background:#2d60e8;
+
     color:white;
+
 }
 
 th{
+
     padding:14px;
+
 }
 
 td{
+
     padding:14px;
+
     border-bottom:1px solid #e5e7eb;
+
+}
+
+tbody tr{
+
+    cursor:pointer;
+
 }
 
 tbody tr:hover{
+
     background:#edf4ff;
-    cursor:pointer;
+
 }
 
 .selecionado{
+
     background:#dbeafe !important;
+
 }
 
-/* ==========================
-   MODAL
-========================== */
+/* ============================= */
+/* MODAL */
+/* ============================= */
 
 .modal{
+
     display:none;
+
     position:fixed;
-    inset:0;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
     background:rgba(0,0,0,.5);
+
     justify-content:center;
+
     align-items:center;
-    z-index:999;
+
+    z-index:9999;
+
 }
 
 .modal-content{
-    width:700px;
+
+    width:750px;
+
     max-width:95%;
+
     background:white;
+
     border-radius:12px;
+
     padding:25px;
+
 }
 
 .modal-header{
+
     font-size:20px;
+
     font-weight:bold;
+
     margin-bottom:20px;
+
 }
 
 .form-grid{
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:15px;
+
 }
 
 .form-group{
+
     display:flex;
+
     flex-direction:column;
+
 }
 
 .form-group label{
+
     margin-bottom:6px;
-    font-size:14px;
-    color:#444;
+
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea{
+
     padding:10px;
+
     border:1px solid #ccc;
+
     border-radius:8px;
+
 }
 
 .form-group textarea{
+
+    min-height:100px;
+
     resize:vertical;
-    min-height:90px;
+
 }
 
 .modal-footer{
+
     margin-top:20px;
+
     display:flex;
+
     justify-content:flex-end;
+
     gap:10px;
+
 }
 
-/* ==========================
-   RODAPÉ
-========================== */
+/* ============================= */
+/* RODAPÉ */
+/* ============================= */
 
 .rodape{
+
     margin-top:20px;
+
     color:#888;
+
 }
 
 </style>
@@ -272,6 +372,8 @@ tbody tr:hover{
 </head>
 
 <body>
+
+<!-- SIDEBAR -->
 
 <div class="sidebar">
 
@@ -305,10 +407,14 @@ tbody tr:hover{
 
 </div>
 
+<!-- CONTEÚDO -->
+
 <div class="content">
 
     <div class="titulo-secao" id="tituloPagina">
+
         Dashboard
+
     </div>
 
     <!-- DASHBOARD GERAL -->
@@ -352,7 +458,7 @@ tbody tr:hover{
 
     </div>
 
-    <!-- MINI DASHBOARD DA TELA -->
+    <!-- MINI DASHBOARD -->
 
     <div class="cards" id="cardsSecao">
 
@@ -388,21 +494,68 @@ tbody tr:hover{
             placeholder="Pesquisar patrimônio, usuário, setor ou status..."
         >
 
-        <button class="btn btn-success" id="btnNovo">
+        <button class="btn btn-warning"
+                id="btnFiltro">
+
+            🔎 Filtros
+
+        </button>
+
+        <button class="btn btn-success"
+                id="btnNovo">
+
             ➕ Novo
+
         </button>
 
-        <button class="btn btn-primary" id="btnEditar">
+        <button class="btn btn-primary"
+                id="btnEditar">
+
             ✏ Editar
+
         </button>
 
-        <button class="btn btn-danger" id="btnExcluir">
+        <button class="btn btn-danger"
+                id="btnExcluir">
+
             🗑 Excluir
+
         </button>
 
-        <button class="btn btn-info" id="btnAtualizar">
+        <button class="btn btn-info"
+                id="btnAtualizar">
+
             🔄 Atualizar
+
         </button>
+
+    </div>
+
+    <!-- FILTROS -->
+
+    <div id="painelFiltros">
+
+        <h3>Filtros</h3>
+
+        <label>
+            <input type="checkbox" checked>
+            Computadores
+        </label>
+
+        <label>
+            <input type="checkbox" checked>
+            Celulares
+        </label>
+
+        <label>
+            <input type="checkbox" checked>
+            Periféricos
+        </label>
+
+        <label>
+            <input type="checkbox" checked>
+            Usuários
+        </label>
 
     </div>
 
@@ -413,7 +566,9 @@ tbody tr:hover{
         <table>
 
             <thead>
+
                 <tr id="cabecalhoTabela"></tr>
+
             </thead>
 
             <tbody id="tabela"></tbody>
@@ -423,33 +578,47 @@ tbody tr:hover{
     </div>
 
     <div class="rodape">
-        Inventário TI v2.0
+
+        Inventário TI V3
+
     </div>
 
 </div>
 
 <!-- MODAL -->
 
-<div class="modal" id="modalRegistro">
+<div id="modalRegistro" class="modal">
 
     <div class="modal-content">
 
-        <div class="modal-header" id="tituloModal">
+        <div class="modal-header"
+             id="tituloModal">
+
             Novo Registro
+
         </div>
 
-        <div class="form-grid" id="camposModal">
+        <div id="camposModal"
+             class="form-grid">
 
         </div>
 
         <div class="modal-footer">
 
-            <button class="btn btn-danger">
+            <button
+                id="btnCancelarModal"
+                class="btn btn-danger">
+
                 Cancelar
+
             </button>
 
-            <button class="btn btn-success">
+            <button
+                id="btnSalvarModal"
+                class="btn btn-success">
+
                 Salvar
+
             </button>
 
         </div>
@@ -458,24 +627,24 @@ tbody tr:hover{
 
 </div>
 
-<script>
+    <script>
 
 let abaAtual = "dashboard";
 
 let banco = {
 
-    computadores: [],
-    celulares: [],
-    perifericos: [],
-    usuarios: []
+    computadores:[],
+    celulares:[],
+    perifericos:[],
+    usuarios:[]
 
 };
 
 let linhaSelecionada = null;
 
-/* ==========================
+/* ==================================
    DASHBOARD
-========================== */
+================================== */
 
 function abrirDashboard(){
 
@@ -493,116 +662,29 @@ function abrirDashboard(){
         "cardsSecao"
     ).style.display = "none";
 
-}
+    document.getElementById(
+        "btnNovo"
+    ).style.display = "none";
 
-function atualizarDashboard(){
+    document.getElementById(
+        "btnEditar"
+    ).style.display = "none";
 
-    document.getElementById("qtdComp").innerText =
-        banco.computadores.length;
+    document.getElementById(
+        "btnExcluir"
+    ).style.display = "none";
 
-    document.getElementById("qtdCel").innerText =
-        banco.celulares.length;
+    document.getElementById(
+        "btnFiltro"
+    ).style.display = "";
 
-    document.getElementById("qtdPer").innerText =
-        banco.perifericos.length;
-
-    document.getElementById("qtdUser").innerText =
-        banco.usuarios.length;
-
-    let uso = 0;
-    let disponivel = 0;
-    let reparo = 0;
-
-    const tudo = [
-        ...banco.computadores,
-        ...banco.celulares,
-        ...banco.perifericos
-    ];
-
-    tudo.forEach(item => {
-
-        const status =
-            (item.status || "").toLowerCase();
-
-        if(status === "em uso")
-            uso++;
-
-        if(status === "disponível")
-            disponivel++;
-
-        if(
-            status === "em reparo" ||
-            status === "em manutenção"
-        )
-            reparo++;
-    });
-
-    document.getElementById("qtdUso").innerText =
-        uso;
-
-    document.getElementById("qtdDisp").innerText =
-        disponivel;
-
-    document.getElementById("qtdReparo").innerText =
-        reparo;
+    limparTabela();
 
 }
 
-/* ==========================
-   MINI DASHBOARD
-========================== */
-
-function atualizarMiniDashboard(tipo){
-
-    let total = 0;
-    let uso = 0;
-    let disponivel = 0;
-    let reparo = 0;
-
-    const lista = banco[tipo] || [];
-
-    total = lista.length;
-
-    lista.forEach(item => {
-
-        const status =
-            (item.status || "").toLowerCase();
-
-        if(status === "em uso")
-            uso++;
-
-        if(status === "disponível")
-            disponivel++;
-
-        if(
-            status === "em reparo" ||
-            status === "em manutenção"
-        )
-            reparo++;
-
-    });
-
-    document.getElementById(
-        "secaoTotal"
-    ).innerText = total;
-
-    document.getElementById(
-        "secaoUso"
-    ).innerText = uso;
-
-    document.getElementById(
-        "secaoDisponivel"
-    ).innerText = disponivel;
-
-    document.getElementById(
-        "secaoReparo"
-    ).innerText = reparo;
-
-}
-
-/* ==========================
-   TABELA
-========================== */
+/* ==================================
+   TABELAS
+================================== */
 
 function carregarTabela(tipo){
 
@@ -611,8 +693,8 @@ function carregarTabela(tipo){
     document.getElementById(
         "tituloPagina"
     ).innerText =
-        tipo.charAt(0).toUpperCase() +
-        tipo.slice(1);
+    tipo.charAt(0).toUpperCase() +
+    tipo.slice(1);
 
     document.getElementById(
         "dashboardCards"
@@ -621,6 +703,22 @@ function carregarTabela(tipo){
     document.getElementById(
         "cardsSecao"
     ).style.display = "flex";
+
+    document.getElementById(
+        "btnNovo"
+    ).style.display = "";
+
+    document.getElementById(
+        "btnEditar"
+    ).style.display = "";
+
+    document.getElementById(
+        "btnExcluir"
+    ).style.display = "";
+
+    document.getElementById(
+        "btnFiltro"
+    ).style.display = "none";
 
     atualizarMiniDashboard(tipo);
 
@@ -643,23 +741,25 @@ function carregarTabela(tipo){
     }
 
     const colunas =
-        Object.keys(banco[tipo][0]);
+    Object.keys(
+        banco[tipo][0]
+    );
 
-    colunas.forEach(col => {
+    colunas.forEach(col=>{
 
         cabecalho.innerHTML +=
-            `<th>${col}</th>`;
+        `<th>${col}</th>`;
 
     });
 
-    banco[tipo].forEach(item => {
+    banco[tipo].forEach(item=>{
 
         let linha = "<tr>";
 
-        colunas.forEach(col => {
+        colunas.forEach(col=>{
 
             linha +=
-                `<td>${item[col] ?? ""}</td>`;
+            `<td>${item[col] ?? ""}</td>`;
 
         });
 
@@ -673,23 +773,176 @@ function carregarTabela(tipo){
 
 }
 
-/* ==========================
+/* ==================================
+   DASHBOARD GERAL
+================================== */
+
+function atualizarDashboard(){
+
+    document.getElementById(
+        "qtdComp"
+    ).innerText =
+    banco.computadores.length;
+
+    document.getElementById(
+        "qtdCel"
+    ).innerText =
+    banco.celulares.length;
+
+    document.getElementById(
+        "qtdPer"
+    ).innerText =
+    banco.perifericos.length;
+
+    document.getElementById(
+        "qtdUser"
+    ).innerText =
+    banco.usuarios.length;
+
+    let uso = 0;
+    let disp = 0;
+    let reparo = 0;
+
+    const ativos = [
+
+        ...banco.computadores,
+        ...banco.celulares,
+        ...banco.perifericos
+
+    ];
+
+    ativos.forEach(item=>{
+
+        const status =
+        (item.status || "")
+        .toLowerCase();
+
+        if(status === "em uso")
+            uso++;
+
+        if(status === "disponível")
+            disp++;
+
+        if(
+            status === "em reparo" ||
+            status === "em manutenção"
+        )
+            reparo++;
+
+    });
+
+    document.getElementById(
+        "qtdUso"
+    ).innerText = uso;
+
+    document.getElementById(
+        "qtdDisp"
+    ).innerText = disp;
+
+    document.getElementById(
+        "qtdReparo"
+    ).innerText = reparo;
+
+}
+
+/* ==================================
+   MINI DASHBOARD
+================================== */
+
+function atualizarMiniDashboard(tipo){
+
+    if(
+        !banco[tipo]
+    ){
+        return;
+    }
+
+    const lista =
+        banco[tipo];
+
+    let uso = 0;
+    let disp = 0;
+    let reparo = 0;
+
+    lista.forEach(item=>{
+
+        const status =
+        (item.status || "")
+        .toLowerCase();
+
+        if(status === "em uso")
+            uso++;
+
+        if(status === "disponível")
+            disp++;
+
+        if(
+            status === "em reparo" ||
+            status === "em manutenção"
+        )
+            reparo++;
+
+    });
+
+    document.getElementById(
+        "secaoTotal"
+    ).innerText =
+    lista.length;
+
+    document.getElementById(
+        "secaoUso"
+    ).innerText =
+    uso;
+
+    document.getElementById(
+        "secaoDisponivel"
+    ).innerText =
+    disp;
+
+    document.getElementById(
+        "secaoReparo"
+    ).innerText =
+    reparo;
+
+}
+
+/* ==================================
+   LIMPA TABELA
+================================== */
+
+function limparTabela(){
+
+    document.getElementById(
+        "tabela"
+    ).innerHTML = "";
+
+    document.getElementById(
+        "cabecalhoTabela"
+    ).innerHTML = "";
+
+}
+
+/* ==================================
    SELEÇÃO
-========================== */
+================================== */
 
 function selecionarLinhas(){
 
     document
-    .querySelectorAll("#tabela tr")
-    .forEach(linha => {
+    .querySelectorAll(
+        "#tabela tr"
+    )
+    .forEach(linha=>{
 
         linha.addEventListener(
             "click",
-            () => {
+            ()=>{
 
                 document
-                .querySelectorAll("#tabela tr")
-                .forEach(l => {
+                .querySelectorAll(
+                    "#tabela tr"
+                )
+                .forEach(l=>{
 
                     l.classList.remove(
                         "selecionado"
@@ -701,7 +954,8 @@ function selecionarLinhas(){
                     "selecionado"
                 );
 
-                linhaSelecionada = linha;
+                linhaSelecionada =
+                    linha;
 
             }
         );
@@ -710,22 +964,30 @@ function selecionarLinhas(){
 
 }
 
-/* ==========================
+/* ==================================
    PESQUISA
-========================== */
+================================== */
 
 document
-.getElementById("pesquisa")
-.addEventListener("keyup", function(){
+.getElementById(
+    "pesquisa"
+)
+.addEventListener(
+    "keyup",
+    function(){
 
-    const texto =
-        this.value.toLowerCase();
+        const texto =
+        this.value
+        .toLowerCase();
 
-    document
-    .querySelectorAll("#tabela tr")
-    .forEach(linha => {
+        document
+        .querySelectorAll(
+            "#tabela tr"
+        )
+        .forEach(linha=>{
 
-        linha.style.display =
+            linha.style.display =
+
             linha.innerText
             .toLowerCase()
             .includes(texto)
@@ -734,13 +996,43 @@ document
 
             : "none";
 
-    });
+        });
 
-});
+    }
+);
 
-/* ==========================
+/* ==================================
+   FILTROS
+================================== */
+
+document
+.getElementById(
+    "btnFiltro"
+)
+.addEventListener(
+    "click",
+    ()=>{
+
+        const painel =
+        document.getElementById(
+            "painelFiltros"
+        );
+
+        painel.style.display =
+
+        painel.style.display ===
+        "block"
+
+        ? "none"
+
+        : "block";
+
+    }
+);
+
+/* ==================================
    MODAL
-========================== */
+================================== */
 
 const modal =
 document.getElementById(
@@ -754,92 +1046,132 @@ function abrirModal(titulo){
     ).innerText = titulo;
 
     modal.style.display =
-        "flex";
+    "flex";
 
 }
 
 function fecharModal(){
 
     modal.style.display =
-        "none";
+    "none";
 
 }
 
 document
-.querySelector(".btn-danger")
+.getElementById(
+    "btnCancelarModal"
+)
 .addEventListener(
     "click",
     fecharModal
 );
 
-/* ==========================
-   BOTÕES
-========================== */
+/* ==================================
+   CRUD VISUAL
+================================== */
 
 document
-.getElementById("btnNovo")
-.addEventListener("click",()=>{
+.getElementById(
+    "btnNovo"
+)
+.addEventListener(
+    "click",
+    ()=>{
 
-    abrirModal(
-        "Novo Registro"
-    );
-
-});
-
-document
-.getElementById("btnEditar")
-.addEventListener("click",()=>{
-
-    if(!linhaSelecionada){
-
-        alert(
-            "Selecione um registro."
+        abrirModal(
+            "Novo Registro"
         );
 
-        return;
     }
-
-    abrirModal(
-        "Editar Registro"
-    );
-
-});
+);
 
 document
-.getElementById("btnExcluir")
-.addEventListener("click",()=>{
+.getElementById(
+    "btnEditar"
+)
+.addEventListener(
+    "click",
+    ()=>{
 
-    if(!linhaSelecionada){
+        if(!linhaSelecionada){
 
-        alert(
-            "Selecione um registro."
+            alert(
+                "Selecione um registro."
+            );
+
+            return;
+
+        }
+
+        abrirModal(
+            "Editar Registro"
         );
 
-        return;
     }
+);
 
-    const confirmar =
-    confirm(
-        "Deseja excluir?"
-    );
+document
+.getElementById(
+    "btnExcluir"
+)
+.addEventListener(
+    "click",
+    ()=>{
 
-    if(confirmar){
+        if(!linhaSelecionada){
 
-        linhaSelecionada.remove();
+            alert(
+                "Selecione um registro."
+            );
+
+            return;
+
+        }
+
+        const confirmar =
+        confirm(
+            "Deseja excluir o registro?"
+        );
+
+        if(confirmar){
+
+            linhaSelecionada.remove();
+
+            linhaSelecionada = null;
+
+        }
 
     }
+);
 
-});
+/* ==================================
+   SALVAR (TEMPORÁRIO)
+================================== */
 
-/* ==========================
+document
+.getElementById(
+    "btnSalvarModal"
+)
+.addEventListener(
+    "click",
+    ()=>{
+
+        alert(
+            "Próxima etapa: salvar no Firebase."
+        );
+
+    }
+);
+
+/* ==================================
    INICIALIZAÇÃO
-========================== */
+================================== */
 
 abrirDashboard();
 
 </script>
 
-<script type="module">
+    <script type="module">
 
 import {
     initializeApp
@@ -853,7 +1185,9 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-/* FIREBASE */
+/* ==================================
+   FIREBASE
+================================== */
 
 const firebaseConfig = {
 
@@ -883,120 +1217,246 @@ initializeApp(firebaseConfig);
 const db =
 getFirestore(app);
 
-/* COMPUTADORES */
+/* ==================================
+   COMPUTADORES
+================================== */
 
-async function
-carregarComputadores(){
+async function carregarComputadores(){
 
-    const snapshot =
-    await getDocs(
-        collection(
-            db,
-            "Computadores"
-        )
-    );
+    try{
 
-    banco.computadores = [];
-
-    snapshot.forEach(doc=>{
-
-        banco.computadores.push(
-            doc.data()
+        const snapshot =
+        await getDocs(
+            collection(
+                db,
+                "Computadores"
+            )
         );
 
-    });
+        banco.computadores = [];
 
-    atualizarDashboard();
+        snapshot.forEach(doc=>{
+
+            banco.computadores.push({
+
+                id: doc.id,
+
+                ...doc.data()
+
+            });
+
+        });
+
+        console.log(
+            "Computadores:",
+            banco.computadores.length
+        );
+
+    }
+    catch(erro){
+
+        console.error(
+            "Erro Computadores:",
+            erro
+        );
+
+    }
 
 }
 
-/* CELULARES */
+/* ==================================
+   CELULARES
+================================== */
 
-async function
-carregarCelulares(){
+async function carregarCelulares(){
 
-    const snapshot =
-    await getDocs(
-        collection(
-            db,
-            "Celulares"
-        )
-    );
+    try{
 
-    banco.celulares = [];
-
-    snapshot.forEach(doc=>{
-
-        banco.celulares.push(
-            doc.data()
+        const snapshot =
+        await getDocs(
+            collection(
+                db,
+                "Celulares"
+            )
         );
 
-    });
+        banco.celulares = [];
 
-    atualizarDashboard();
+        snapshot.forEach(doc=>{
+
+            banco.celulares.push({
+
+                id: doc.id,
+
+                ...doc.data()
+
+            });
+
+        });
+
+        console.log(
+            "Celulares:",
+            banco.celulares.length
+        );
+
+    }
+    catch(erro){
+
+        console.error(
+            "Erro Celulares:",
+            erro
+        );
+
+    }
 
 }
 
-/* PERIFERICOS */
+/* ==================================
+   PERIFERICOS
+================================== */
 
-async function
-carregarPerifericos(){
+async function carregarPerifericos(){
 
-    const snapshot =
-    await getDocs(
-        collection(
-            db,
-            "perifericos"
-        )
-    );
+    try{
 
-    banco.perifericos = [];
-
-    snapshot.forEach(doc=>{
-
-        banco.perifericos.push(
-            doc.data()
+        const snapshot =
+        await getDocs(
+            collection(
+                db,
+                "perifericos"
+            )
         );
 
-    });
+        banco.perifericos = [];
 
-    atualizarDashboard();
+        snapshot.forEach(doc=>{
+
+            banco.perifericos.push({
+
+                id: doc.id,
+
+                ...doc.data()
+
+            });
+
+        });
+
+        console.log(
+            "Periféricos:",
+            banco.perifericos.length
+        );
+
+    }
+    catch(erro){
+
+        console.error(
+            "Erro Periféricos:",
+            erro
+        );
+
+    }
 
 }
 
-/* USUARIOS */
+/* ==================================
+   USUARIOS
+================================== */
 
-async function
-carregarUsuarios(){
+async function carregarUsuarios(){
 
-    const snapshot =
-    await getDocs(
-        collection(
-            db,
-            "usuarios"
-        )
-    );
+    try{
 
-    banco.usuarios = [];
-
-    snapshot.forEach(doc=>{
-
-        banco.usuarios.push(
-            doc.data()
+        const snapshot =
+        await getDocs(
+            collection(
+                db,
+                "usuarios"
+            )
         );
 
-    });
+        banco.usuarios = [];
 
-    atualizarDashboard();
+        snapshot.forEach(doc=>{
+
+            banco.usuarios.push({
+
+                id: doc.id,
+
+                ...doc.data()
+
+            });
+
+        });
+
+        console.log(
+            "Usuários:",
+            banco.usuarios.length
+        );
+
+    }
+    catch(erro){
+
+        console.error(
+            "Erro Usuários:",
+            erro
+        );
+
+    }
 
 }
 
-/* INÍCIO */
+/* ==================================
+   ATUALIZAÇÃO GERAL
+================================== */
 
-await carregarComputadores();
-await carregarCelulares();
-await carregarPerifericos();
-await carregarUsuarios();
+async function atualizarSistema(){
+
+    await carregarComputadores();
+
+    await carregarCelulares();
+
+    await carregarPerifericos();
+
+    await carregarUsuarios();
+
+    atualizarDashboard();
+
+    if(
+        abaAtual !== "dashboard"
+    ){
+
+        carregarTabela(
+            abaAtual
+        );
+
+    }
+
+}
+
+/* ==================================
+   BOTÃO ATUALIZAR
+================================== */
+
+document
+.getElementById(
+    "btnAtualizar"
+)
+.addEventListener(
+    "click",
+    atualizarSistema
+);
+
+/* ==================================
+   INICIALIZAÇÃO
+================================== */
+
+await atualizarSistema();
+
+abrirDashboard();
+
+console.log(
+    "Inventário TI V3 carregado."
+);
 
 </script>
 
