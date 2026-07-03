@@ -298,7 +298,7 @@ tbody tr:hover{
 
 let abaAtual = "computadores";
 
-const banco = {
+let banco = {
 
     computadores:[
         {
@@ -394,7 +394,7 @@ function carregarTabela(tipo){
     tabela.innerHTML = "";
     cabecalho.innerHTML = "";
 
-    if(!banco[tipo].length)
+    if(!banco[tipo] || banco[tipo].length === 0)
         return;
 
     let colunas = Object.keys(
@@ -530,6 +530,10 @@ async function carregarComputadoresFirebase(){
         });
 
         banco.computadores = lista;
+
+   
+        console.log("Banco atualizado:");
+        console.log(banco.computadores);
 
         atualizarCards();
 
