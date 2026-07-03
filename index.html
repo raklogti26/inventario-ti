@@ -1041,14 +1041,86 @@ document.getElementById(
 
 function abrirModal(titulo){
 
-    document.getElementById(
+    
+document.getElementById(
         "tituloModal"
     ).innerText = titulo;
 
-    modal.style.display =
-    "flex";
+    const campos =
+    document.getElementById(
+        "camposModal"
+    );
+
+    campos.innerHTML = "";
+
+    if(abaAtual === "computadores"){
+
+        campos.innerHTML = `
+
+            <div class="form-group">
+                <label>Patrimônio</label>
+                <input
+                    type="text"
+                    id="patrimonio">
+            </div>
+
+            <div class="form-group">
+                <label>Modelo</label>
+                <input
+                    type="text"
+                    id="modelo">
+            </div>
+
+            <div class="form-group">
+                <label>Usuário</label>
+                <input
+                    type="text"
+                    id="usuario">
+            </div>
+
+            <div class="form-group">
+                <label>Setor</label>
+                <input
+                    type="text"
+                    id="setor">
+            </div>
+
+            <div class="form-group">
+                <label>Status</label>
+
+                <select id="status">
+
+                    <option>
+                        Em Uso
+                    </option>
+
+                    <option>
+                        Disponível
+                    </option>
+
+                    <option>
+                        Em Reparo
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+                <label>Observação</label>
+
+                <textarea
+                id="observacao"></textarea>
+            </div>
+
+        `;
+
+    }
+
+    modal.style.display = "flex";
 
 }
+
 
 function fecharModal(){
 
