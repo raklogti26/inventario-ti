@@ -1191,16 +1191,74 @@ function fecharModal(){
 
 function mostrarDetalhes(item){
 
+    const ordemCampos = [
+
+        "patrimonio",
+        "dominio",
+        "usuario",
+        "setor",
+
+        "serial",
+        "status",
+
+        "tipo",
+        "marca",
+        "modelo",
+
+        "cpu",
+        "ram",
+        "gpu",
+        "armazenamento",
+
+        "sistema",
+
+        "usuarioAnterior",
+
+        "observacao"
+
+    ];
+
+    const nomesCampos = {
+
+        patrimonio: "Patrimônio",
+        dominio: "Domínio",
+        usuario: "Usuário",
+        setor: "Setor",
+
+        serial: "Serial",
+        status: "Status",
+
+        tipo: "Tipo",
+        marca: "Marca",
+        modelo: "Modelo",
+
+        cpu: "CPU",
+        ram: "RAM",
+        gpu: "GPU",
+        armazenamento: "Armazenamento",
+
+        sistema: "Sistema",
+
+        usuarioAnterior: "Usuário Anterior",
+
+        observacao: "Observação"
+
+    };
+
     let detalhes = "";
 
-    Object.keys(item).forEach(campo=>{
+    ordemCampos.forEach(campo=>{
 
-        if(campo === "id"){
+        if(
+            item[campo] === "" ||
+            item[campo] === null ||
+            item[campo] === undefined
+        ){
             return;
         }
 
         detalhes +=
-        `${campo}: ${item[campo] ?? ""}\n`;
+        `${nomesCampos[campo]}: ${item[campo]}\n`;
 
     });
 
