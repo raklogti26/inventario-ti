@@ -753,10 +753,15 @@ function carregarTabela(tipo){
 
     colunas.forEach(col=>{
 
-        cabecalho.innerHTML +=
-        `<th>${col}</th>`;
+       cabecalho.innerHTML +=
+       `<th>${col}</th>`;
 
     });
+
+    cabecalho.innerHTML +=
+    `<th>Detalhes</th>`;
+
+   
 
     banco[tipo].forEach(item=>{
 
@@ -769,6 +774,16 @@ function carregarTabela(tipo){
 
         });
 
+        linha += `
+               <td>
+                 <button
+                 class="btn btn-info"
+                 onclick='mostrarDetalhes(${JSON.stringify(item)})'>
+                 🔍
+               </button>
+        </td>
+        `;
+        
         linha += "</tr>";
 
         tabela.innerHTML += linha;
@@ -1173,6 +1188,27 @@ function fecharModal(){
 
 }
 
+
+function mostrarDetalhes(item){
+
+    let detalhes = "";
+
+    Object.keys(item).forEach(campo=>{
+
+        if(campo === "id"){
+            return;
+        }
+
+        detalhes +=
+        `${campo}: ${item[campo] ?? ""}\n`;
+
+    });
+
+    alert(detalhes);
+
+}
+
+        
 document
 .getElementById(
     "btnCancelarModal"
