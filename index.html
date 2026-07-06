@@ -627,6 +627,40 @@ tbody tr:hover{
 
 </div>
 
+
+<!-- NOVO MODAL DETALHES -->
+
+<div id="modalDetalhes" class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            Detalhes do Computador
+
+        </div>
+
+        <div id="conteudoDetalhes"></div>
+
+        <div class="modal-footer">
+
+            <button
+                class="btn btn-primary"
+                onclick="fecharDetalhes()">
+
+                Fechar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+    
     <script>
 
 let abaAtual = "dashboard";
@@ -1188,6 +1222,15 @@ function fecharModal(){
 
 }
 
+        
+function fecharDetalhes(){
+
+    document.getElementById(
+        "modalDetalhes"
+    ).style.display = "none";
+
+}
+
 
 function mostrarDetalhes(item){
 
@@ -1262,7 +1305,17 @@ function mostrarDetalhes(item){
 
     });
 
-    alert(detalhes);
+    
+document.getElementById(
+    "conteudoDetalhes"
+).innerHTML =
+
+`<pre>${detalhes}</pre>`;
+
+document.getElementById(
+    "modalDetalhes"
+).style.display = "flex";
+
 
 }
 
