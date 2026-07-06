@@ -740,10 +740,16 @@ function carregarTabela(tipo){
         return;
     }
 
-    const colunas =
-    Object.keys(
-        banco[tipo][0]
-    );
+    const colunas = [
+   
+    "patrimonio",
+    "usuario",
+    "setor",
+    "modelo",
+    "status"
+
+    ];
+
 
     colunas.forEach(col=>{
 
