@@ -837,14 +837,26 @@ function abrirConfiguracoes(){
     ).style.display = "block";
 
 }
-   function abrirConfigSetores(){
+   
+function abrirConfigSetores(){
+
+    let linhas = "";
+
+    banco.config_setores.forEach(setor=>{
+
+        linhas += `
+            <tr>
+                <td>${setor.nome}</td>
+            </tr>
+        `;
+
+    });
 
     document.getElementById(
         "conteudoConfiguracoes"
     ).innerHTML = `
 
-        
-<h3>🏢 Gerenciamento de Setores</h3>
+        <h3>🏢 Gerenciamento de Setores</h3>
 
         <br>
 
@@ -860,17 +872,7 @@ function abrirConfiguracoes(){
 
                 <tbody>
 
-                    <tr>
-                        <td>TI</td>
-                    </tr>
-
-                    <tr>
-                        <td>Financeiro</td>
-                    </tr>
-
-                    <tr>
-                        <td>RH</td>
-                    </tr>
+                    ${linhas}
 
                 </tbody>
 
@@ -891,63 +893,6 @@ function abrirConfiguracoes(){
     `;
 
 }
-
-
-function abrirConfigTipos(){
-
-    
-document.getElementById(
-        "conteudoConfiguracoes"
-    ).innerHTML = `
-
-        <h3>💻 Gerenciamento de Tipos</h3>
-
-        <br>
-
-        <div class="table-container">
-
-            <table>
-
-                <thead>
-                    <tr>
-                        <th>Tipo</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <td>Desktop</td>
-                    </tr>
-
-                    <tr>
-                        <td>Notebook</td>
-                    </tr>
-
-                    <tr>
-                        <td>Servidor</td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-        <br>
-
-        <button class="btn btn-success">
-            ➕ Novo Tipo
-        </button>
-
-        <button class="btn btn-danger">
-            🗑 Excluir Tipo
-        </button>
-
-    `;
-
-}
-
 
 function abrirConfigStatus(){
 
@@ -1060,6 +1005,45 @@ document.getElementById(
 
 }
 
+async function carregarSetores(){
+
+    try{
+
+        
+        const snapshot =
+        await window.getDocs(
+        window.collection(
+             window.db,
+            "config_setores"
+        )
+    );
+
+
+        banco.config_setores = [];
+
+        snapshot.forEach(doc=>{
+
+            banco.config_setores.push({
+
+                id: doc.id,
+
+                ...doc.data()
+
+            });
+
+        });
+
+    }
+    catch(erro){
+
+        console.error(
+            "Erro ao carregar setores:",
+            erro
+        );
+
+    }
+
+}
 
 
 /* ==================================
@@ -1929,6 +1913,7 @@ getFirestore(app);
 window.db = db;
 window.addDoc = addDoc;
 window.collection = collection;
+window.getDocs = getDocs;
 
 
 document
@@ -2231,6 +2216,8 @@ async function atualizarSistema(){
 
     await carregarPerifericos();
 
+    await carregarSetores();
+    
     await carregarUsuarios();
 
     atualizarDashboard();
