@@ -587,41 +587,64 @@ tbody tr:hover{
 
     <div class="cards">
 
-        <div class="card">
-            <h2>🏢</h2>
-            <span>Setores</span>
-        </div>
+    <div
+        class="card"
+        onclick="abrirConfigSetores()"
+        style="cursor:pointer;">
 
-        <div class="card">
-            <h2>💻</h2>
-            <span>Tipos</span>
-        </div>
-
-        <div class="card">
-            <h2>📊</h2>
-            <span>Status</span>
-        </div>
-
-        <div class="card">
-            <h2>🏷️</h2>
-            <span>Marcas</span>
-        </div>
+        <h2>🏢</h2>
+        <span>Setores</span>
 
     </div>
 
+    <div
+        class="card"
+        onclick="abrirConfigTipos()"
+        style="cursor:pointer;">
+
+        <h2>💻</h2>
+        <span>Tipos</span>
+
+    </div>
+
+    <div
+        class="card"
+        onclick="abrirConfigStatus()"
+        style="cursor:pointer;">
+
+        <h2>📊</h2>
+        <span>Status</span>
+
+    </div>
+
+    <div
+        class="card"
+        onclick="abrirConfigMarcas()"
+        style="cursor:pointer;">
+
+        <h2>🏷️</h2>
+        <span>Marcas</span>
+
+    </div>
+
+</div>
+
     <div class="table-container">
 
-        <div style="padding:20px;">
+       <div
+    id="conteudoConfiguracoes"
+    style="padding:20px;">
 
-            <h3>Área de Configuração</h3>
+    <h3>Área de Configuração</h3>
 
-            <br>
+    <br>
 
-            <p>
-                Selecione uma categoria acima para gerenciar os dados do sistema.
-            </p>
+    <p>
+        Selecione uma categoria acima para gerenciar os dados do sistema.
+    </p>
 
-        </div>
+</div>
+ 
 
     </div>
 
@@ -814,7 +837,231 @@ function abrirConfiguracoes(){
     ).style.display = "block";
 
 }
-     
+   function abrirConfigSetores(){
+
+    document.getElementById(
+        "conteudoConfiguracoes"
+    ).innerHTML = `
+
+        
+<h3>🏢 Gerenciamento de Setores</h3>
+
+        <br>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Setor</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>TI</td>
+                    </tr>
+
+                    <tr>
+                        <td>Financeiro</td>
+                    </tr>
+
+                    <tr>
+                        <td>RH</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <button class="btn btn-success">
+            ➕ Novo Setor
+        </button>
+
+        <button class="btn btn-danger">
+            🗑 Excluir Setor
+        </button>
+
+    `;
+
+}
+
+
+function abrirConfigTipos(){
+
+    
+document.getElementById(
+        "conteudoConfiguracoes"
+    ).innerHTML = `
+
+        <h3>💻 Gerenciamento de Tipos</h3>
+
+        <br>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Desktop</td>
+                    </tr>
+
+                    <tr>
+                        <td>Notebook</td>
+                    </tr>
+
+                    <tr>
+                        <td>Servidor</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <button class="btn btn-success">
+            ➕ Novo Tipo
+        </button>
+
+        <button class="btn btn-danger">
+            🗑 Excluir Tipo
+        </button>
+
+    `;
+
+}
+
+
+function abrirConfigStatus(){
+
+   
+document.getElementById(
+        "conteudoConfiguracoes"
+    ).innerHTML = `
+
+        <h3>📊 Gerenciamento de Status</h3>
+
+        <br>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Em Uso</td>
+                    </tr>
+
+                    <tr>
+                        <td>Disponível</td>
+                    </tr>
+
+                    <tr>
+                        <td>Em Reparo</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <button class="btn btn-success">
+            ➕ Novo Status
+        </button>
+
+        <button class="btn btn-danger">
+            🗑 Excluir Status
+        </button>
+
+    `;
+
+}
+
+
+function abrirConfigMarcas(){
+
+    
+document.getElementById(
+        "conteudoConfiguracoes"
+    ).innerHTML = `
+
+        <h3>🏷️ Gerenciamento de Marcas</h3>
+
+        <br>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Marca</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Dell</td>
+                    </tr>
+
+                    <tr>
+                        <td>HP</td>
+                    </tr>
+
+                    <tr>
+                        <td>Lenovo</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <button class="btn btn-success">
+            ➕ Nova Marca
+        </button>
+
+        <button class="btn btn-danger">
+            🗑 Excluir Marca
+        </button>
+
+    `;
+
+}
+
+
+
 /* ==================================
    TABELAS
 ================================== */
