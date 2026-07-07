@@ -403,7 +403,11 @@ tbody tr:hover{
             👥 Usuários
         </button>
 
-    </div>
+        <button onclick="abrirConfiguracoes()">
+           ⚙️ Configurações
+        </button>
+
+   </div>
 
 </div>
 
@@ -671,7 +675,9 @@ let banco = {
     celulares:[],
     perifericos:[],
     usuarios:[]
-
+        
+    config_setores:[]
+    
 };
 
 let linhaSelecionada = null;
@@ -716,6 +722,20 @@ function abrirDashboard(){
 
 }
 
+
+/* ==================================
+   CONFIGURAÇÕES
+================================== */
+
+function abrirConfiguracoes(){
+*    carregarTabela(
+        "confi*_setores"
+    );
+
+}
+
+
+        
 /* ==================================
    TABELAS
 ================================== */
@@ -1857,6 +1877,10 @@ async function carregarUsuarios(){
 
 }
 
+
+
+        
+        
 /* ==================================
    ATUALIZAÇÃO GERAL
 ================================== */
