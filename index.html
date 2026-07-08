@@ -843,6 +843,24 @@ function abrirConfiguracoes(){
    
 function abrirConfigSetores(){
 
+function abrirConfigTipos(){
+
+    document.getElementById(
+        "conteudoConfiguracoes"
+    ).innerHTML = `
+
+        <h3>💻 Gerenciamento de Tipos</h3>
+
+        <br>
+
+        <p>
+            Carregamento dos tipos será implementado na próxima etapa.
+        </p>
+
+    `;
+
+}
+
     let linhas = "";
 
     banco.config_setores.forEach(setor=>{
