@@ -840,26 +840,8 @@ function abrirConfiguracoes(){
     ).style.display = "block";
 
 }
-   
+
 function abrirConfigSetores(){
-
-function abrirConfigTipos(){
-
-    document.getElementById(
-        "conteudoConfiguracoes"
-    ).innerHTML = `
-
-        <h3>💻 Gerenciamento de Tipos</h3>
-
-        <br>
-
-        <p>
-            Carregamento dos tipos será implementado na próxima etapa.
-        </p>
-
-    `;
-
-}
 
     let linhas = "";
 
@@ -915,10 +897,27 @@ function abrirConfigTipos(){
 
 }
 
+function abrirConfigTipos(){
+
+    document.getElementById(
+        "conteudoConfiguracoes"
+    ).innerHTML = `
+
+        <h3>💻 Gerenciamento de Tipos</h3>
+
+        <br>
+
+        <p>
+            Carregamento dos tipos será implementado na próxima etapa.
+        </p>
+
+    `;
+
+}
+
 function abrirConfigStatus(){
 
-   
-document.getElementById(
+    document.getElementById(
         "conteudoConfiguracoes"
     ).innerHTML = `
 
@@ -970,11 +969,9 @@ document.getElementById(
 
 }
 
-
 function abrirConfigMarcas(){
 
-    
-document.getElementById(
+    document.getElementById(
         "conteudoConfiguracoes"
     ).innerHTML = `
 
@@ -1030,15 +1027,13 @@ async function carregarSetores(){
 
     try{
 
-        
         const snapshot =
         await window.getDocs(
-        window.collection(
-             window.db,
-            "config_setores"
-        )
-    );
-
+            window.collection(
+                window.db,
+                "config_setores"
+            )
+        );
 
         banco.config_setores = [];
 
@@ -1065,7 +1060,6 @@ async function carregarSetores(){
     }
 
 }
-
 
 /* ==================================
    TABELAS
