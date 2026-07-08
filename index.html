@@ -840,8 +840,9 @@ function abrirConfiguracoes(){
     ).style.display = "block";
 
 }
-
+   
 function abrirConfigSetores(){
+
 
     let linhas = "";
 
@@ -897,6 +898,9 @@ function abrirConfigSetores(){
 
 }
 
+
+
+
 function abrirConfigTipos(){
 
     document.getElementById(
@@ -915,9 +919,14 @@ function abrirConfigTipos(){
 
 }
 
+
+
+
+
 function abrirConfigStatus(){
 
-    document.getElementById(
+   
+document.getElementById(
         "conteudoConfiguracoes"
     ).innerHTML = `
 
@@ -969,9 +978,11 @@ function abrirConfigStatus(){
 
 }
 
+
 function abrirConfigMarcas(){
 
-    document.getElementById(
+    
+document.getElementById(
         "conteudoConfiguracoes"
     ).innerHTML = `
 
@@ -1027,13 +1038,15 @@ async function carregarSetores(){
 
     try{
 
+        
         const snapshot =
         await window.getDocs(
-            window.collection(
-                window.db,
-                "config_setores"
-            )
-        );
+        window.collection(
+             window.db,
+            "config_setores"
+        )
+    );
+
 
         banco.config_setores = [];
 
@@ -1060,6 +1073,7 @@ async function carregarSetores(){
     }
 
 }
+
 
 /* ==================================
    TABELAS
