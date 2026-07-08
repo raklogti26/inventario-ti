@@ -599,7 +599,7 @@ tbody tr:hover{
 
     <div
         class="card"
-        onclick="abrirConfigTipos(); alert('PASSOU');"
+        onclick="abrirConfigTipos()"
         style="cursor:pointer;">
 
         <h2>💻</h2>
@@ -903,6 +903,19 @@ function abrirConfigSetores(){
 
 function abrirConfigTipos(){
 
+    
+    let linhas = "";
+
+    banco.config_tipos.forEach(tipo=>{
+
+        linhas += `
+            <tr>
+                <td>${tipo.nome}</td>
+            </tr>
+        `;
+
+    });
+
     document.getElementById(
         "conteudoConfiguracoes"
     ).innerHTML = `
@@ -911,15 +924,39 @@ function abrirConfigTipos(){
 
         <br>
 
-        <p>
-            Carregamento dos tipos será implementado na próxima etapa.
-        </p>
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    ${linhas}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <button class="btn btn-success">
+            ➕ Novo Tipo
+        </button>
+
+        <button class="btn btn-danger">
+            🗑 Excluir Tipo
+        </button>
 
     `;
 
 }
-
-
 
 
 
@@ -2248,6 +2285,8 @@ async function atualizarSistema(){
     await carregarSetores();
     
     await carregarUsuarios();
+
+    await carregarTipos();
 
     atualizarDashboard();
 
